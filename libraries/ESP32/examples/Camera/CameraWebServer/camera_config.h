@@ -1,4 +1,3 @@
-```cpp
 #ifndef CAMERA_CONFIG_H
 #define CAMERA_CONFIG_H
 
@@ -139,4 +138,3 @@ static inline void applyCameraConfig()
 }
 
 #endif
-```
