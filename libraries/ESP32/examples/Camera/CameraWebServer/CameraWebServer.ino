@@ -1,12 +1,13 @@
 #include <Arduino.h>
 #include "esp_camera.h"
 #include <WiFi.h>
-#include "camera_config.h"
 
 // ===========================
 // Select camera model in board_config.h
 // ===========================
 #include "board_config.h"
+#include "camera_config.h"
+#include <LittleFS.h>
 
 // ===========================
 // Enter your WiFi credentials
@@ -81,6 +82,11 @@ void setup() {
     Serial.printf("Camera init failed with error 0x%x", err);
     return;
   }
+
+if (!LittleFS.begin(true)) {
+    Serial.println("LittleFS Mount Failed");
+    return;
+}
 
 #if defined(CAMERA_MODEL_M5STACK_WIDE) || defined(CAMERA_MODEL_M5STACK_ESP32CAM)
   s->set_vflip(s, 1);
