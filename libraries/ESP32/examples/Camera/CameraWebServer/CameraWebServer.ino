@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "esp_camera.h"
 #include <WiFi.h>
+#include "camera_config.h"
 
 // ===========================
 // Select camera model in board_config.h
@@ -101,6 +102,9 @@ void setup() {
 #if defined(CAMERA_MODEL_ESP32S3_EYE)
   s->set_vflip(s, 1);
 #endif
+
+// NEW
+applyCameraConfig();
 
 // Setup LED FLash if LED pin is defined in camera_pins.h
 #if defined(LED_GPIO_NUM)
